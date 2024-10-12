@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>REGISTRATION FORM</title>
+    <style>
+        * {
+            font-size: small;
+        }
+        body {
+            background-color: #f0f8ff; /* Light blue background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .form_container {
+            background-color: #ffffff; /* White form background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        label {
+            font-size: small;
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            margin-top: 2px; /* Increased margin to ensure visibility */
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="number"],
+        input[type="date"] {
+            font-size: small;
+            width: 100%;
+            padding: 8px;
+            margin-top: 2px;
+            margin-bottom: 2px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box; /* Ensures padding and width are calculated correctly */
+        }
+
+        .submit {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .submit:hover {
+            background-color: #0056b3;
+        }
+
+        .login-link {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .login-link:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            margin-top: 30px;
+            margin-bottom: 2px;
+            font-size: large;
+            font-weight: 200;
+            text-transform: capitalize;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            padding: 2px;
+        }
+
+        /* Fix radio button and label alignment */
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .inline {
+            display: flex;
+            align-items: center;
+        }
+
+        .inline label {
+            margin-right: 10px;
+        }
+
+        .error {
+            color: red; /* Error message color */
+            font-size: small;
+        }
+    </style>
+</head>
+<body>
+    <div class="form_container">
+        <h1>Welcome to Pendo Hospital.</h1>
+        <hr>
+        <form id="registration" action="/register" method="post">
+            <label for="first_name">First Name</label>
+            <input type="text" name="first_name" id="firstName">
+
+            <label for="last_name">Last Name</label>
+            <input type="text" name="last_name" id="lastName">
+
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email">
+
+            <label for="password_hash">Password</label>
+            <input type="password" name="password_hash" id="password">
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address"> <!-- Fixed name from 'adress' to 'address' -->
+
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phone">
+
+            <label for="date_of_birth">Date of Birth:</label>
+            <input type="date" id="date_of_birth" name="dob" required>
+
+            <div class="inline">
+                <input type="radio" id="Male" name="gender" value="Male">
+                <label for="Male">Male</label>
+
+                <input type="radio" id="Female" name="gender" value="Female">
+                <label for="Female">Female</label>
+            </div>
+
+            <div class="inline">
+                <input type="checkbox" name="terms" id="terms">
+                <label for="terms">I agree to the terms and conditions</label>
+            </div>
+
+            <input type="submit" value="Register" class="submit">
+        </form>
+        <div id="error-message"></div>
+        <br>
+        <a href="Login.html" class="login-link">Already have an account? Log in here</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('registration');
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                // Clear previous errors
+                document.querySelectorAll('.error').forEach(e => e.remove());
+
+                const firstName = document.getElementById('firstName');
+                const lastName = document.getElementById('lastName');
+                const email = document.getElementById('email');
+                const password = document.getElementById('password');
+                const address = document.getElementById('address');
+                const phone = document.getElementById('phone');
+                const gender = document.querySelector('input[name="gender"]:checked'); // Fixed name to 'gender'
+                const terms = document.getElementById('terms');
+                const dob = document.getElementById('date_of_birth').value
+
+                let valid = true;
+
+                // Validation logic
+                if (firstName.value.trim() === "") {
+                    showError(firstName, 'Please enter your first name');
+                    valid = false;
+                }
+
+                if (lastName.value.trim() === "") {
+                    showError(lastName, 'Please enter your last name');
+                    valid = false;
+                }
+
+                if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)) {
+                    showError(email, 'Please enter a valid email');
+                    valid = false;
+                }
+
+                if (password.value.length < 8) {
+                    showError(password, 'Password must be at least 8 characters');
+                    valid = false;
+                }
+
+                // Removed confirm password check since it doesn't exist in the form
+
+                const phoneNum = parseInt(phone.value);
+                if (isNaN(phoneNum) || phoneNum <= 0) {
+                    showError(phone, 'Please enter a valid phone number');
+                    valid = false;
+                }
+
+                if (!gender) {
+                    showError(document.querySelector('fieldset'), 'Please select your gender');
+                    valid = false;
+                }
+
+                if (!terms.checked) {
+                    showError(terms, 'You must agree to the terms and conditions');
+                    valid = false;
+                }
+
+                if (address.value.trim() === "") {
+                    showError(address, 'Please enter your address');
+                    valid = false;
+                }
+
+                if (valid) {
+                    alert('Registration Successful');
+                    form.submit(); // Submit the form if all validations pass
+                }
+            });
+
+            function showError(field, message) {
+                const error = document.createElement('div');
+                error.className = 'error';
+                error.innerText = message;
+                field.parentNode.insertBefore(error, field.nextSibling);
+            }
+       
+        fetch('http://localhost:3001/patients/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            firstName: firstName,
+            lastName: lastName,
+            email,
+            password,
+            phone,
+            date_of_birth: dob,
+            gender,
+            address
+        })
+    })  
+
+    .then(response => response.json())
+    .then(data => {
+        if (data.success){
+            alert("You have successfully registered")
+            window.location.href = 'Login.html'
+        } else {
+            alert(data.message)
+        }
+    })
+    .catch(error => console.error('Error:', error))
+});  
+    </script>
+    <a href="Login.html" class="login-link">Already have an account? Log in here</a>
+</body>
+</html>

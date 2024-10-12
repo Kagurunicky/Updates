@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="Style.css" rel="StyleSheet">
+    <title>PENDO TELEMEDICINE </title>
+    <style>
+        * {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box; /* Better box model handling */
+                }
+       .header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    background-color: #4caf50; /* Dark green for header */
+                    padding: 10px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    position: relative;
+                    width: 100%;
+                    top: 0;
+                    z-index: 1000;
+                }
+                .logo img, h1 {
+                    width: 50px;
+                    margin-right: 15px;
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    color: #fff; /* White text for logo and title */
+                }
+                .navbar {
+                    display: flex;
+                    align-items: center;
+                }
+                .nav-links {
+                    display: flex;
+                    list-style-type: none;
+                }
+                .nav-links a {
+                    padding: 10px 15px;
+                    color: #fff; /* White text for links */
+                    text-decoration: none;
+                    transition: color 0.3s; /* Smooth color transition */
+                }
+                .nav-links a:hover {
+                    color: #ffe600; /* Bright color on hover */
+                    cursor: pointer;
+                }
+                .hamburger {
+                    display: none;
+                }
+                input[type=checkbox] {
+                    display: none;
+                }
+                @media (max-width: 768px) {
+                    .hamburger {
+                        display: block;
+                        font-size: 24px;
+                        color: #fff; /* White hamburger icon */
+                        cursor: pointer;
+                    }
+                    input[type=checkbox]:checked ~ .nav-links {
+                        display: flex;
+                    }
+                    .nav-links {
+                        display: none;
+                        flex-direction: column;
+                        position: absolute;
+                        background-color: #4caf50; /* Match header color */
+                        width: 100%;
+                        top: 60px;
+                        left: 0;
+                        box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, 0.1);
+                    }
+                    
+                     
+                   
+                }
+                section {
+            padding: 40px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .welcome-section {
+          background-image: url("images/home.png");
+            height: 100%;   
+            width: 100%;
+            display: flex;
+           
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add a shadow for depth */
+        }
+
+.welcome-content {
+    background-color: #2e7d32;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto; /* Center the content */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+.welcome-content h1,p{
+  display: flex;
+  justify-content: left;
+  flex-direction: row;
+}
+        
+   
+
+.services h1 {
+    font-size: 2.5em; /* Increased size for emphasis */
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    padding: 10px;
+    border-radius: 10px; /* Rounded corners */
+}
+
+.box {
+    margin-top: 10px 10px 10px 10px;
+   
+
+    padding: 20px;
+}
+
+.service-columns {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 0 auto;
+}
+
+.service-columns section {
+    width: calc(33.333% - 20px);
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border: 1px solid #ddd;
+}
+
+.service-columns img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+figure {
+    margin: 0;
+    padding: 0;
+}
+
+figcaption {
+    padding-top: 10px;
+    font-size: 14px;
+    text-align: left;
+}
+
+.service-columns ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    text-align: left;
+}
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #007bff;
+            color: white;
+        }
+        footer {
+                    background-color: #4caf50; /* Match footer with header */
+                    color: #fff; /* White text for footer */
+                    text-align: center;
+                    padding: 20px;
+                }
+                .footer-container {
+                    display: flex;
+                    justify-content: space-around; /* Space out footer sections */
+                }
+                .social-media a {
+                    color: #ffe600; /* Bright color for social links */
+                    margin: 0 10px; /* Margin between icons */
+                }
+                .social-media a:hover {
+                    color: #fff; /* Change to white on hover */
+                }
+                .links ul {
+             flex-direction: row; 
+             display: flex;
+                    width: 100%;
+            }
+            
+            .row {
+                    display: flex;
+                    justify-content: space-between;
+                    margin: 20px 0; /* Add margin for spacing */
+                }
+                .mission, .vision, .motto {
+                    flex: 1;
+                    margin: 5px; /* Reduced margin */
+                    padding: 10px; /* Increased padding */
+                    background-color: #e8f5e9; /* Light green for mission, vision, motto */
+                    border-radius: 5px;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                }
+                .Content {
+                    margin: 10px; /* Updated margin */
+                    padding: 15px; /* Added padding for better spacing */
+                    background-color: #fff; /* White background for content */
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    border-radius: 5px;
+                }
+                button{
+                  background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+                }
+                h2, h3, h4, h1 {
+                    color: #2e7d32; /* Darker green for headings */
+                    font-weight: bold;
+                }
+                .founders {
+                    display: flex;
+                    justify-content: space-around; /* Space out founders evenly */
+                    padding: 20px; /* Added padding */
+                    background-color: whitesmoke; 
+                    border-radius: 5px;
+                   
+                }
+                .founders figure {
+                    text-align: center; /* Center align figures */
+                    margin: 10px; /* Added margin */
+                }
+                .founders img {
+                    width: 120px; /* Slightly smaller images */
+                    height: 120px; 
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+                figcaption {
+                    margin-top: 10px; /* Space between image and caption */
+                    font-size: 14px;
+                    color: #555; /* Darker grey for captions */
+                }
+    </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <img src="images/download.png" alt="hospital logo">
+      <h1>PENDO-MEDICARE</h1>
+  </div>
+  <nav class="navbar">
+    <input type="checkbox" id="checkbox-toggle">
+    <label for="checkbox-toggle" class="hamburger">&#9776;</label>
+    <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="../services/services.html">Services</a></li>
+        <li><a href="bookappointment.html">Book Appointment</a></li>
+        <li><a href="prescription.html">Prescription</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="payment.html">Payment Gateway</a></li>
+        <li><a href="../about us/aboutus.html">Contact Us</a></li>>
+    </ul>
+</nav>
+</div>
+</header>
+<body>
+  <section class="welcome-section">
+    <div class="welcome-content">
+        <h1>Welcome to Pendo Hospital</h1>
+        <p>We are dedicated to providing the highest quality healthcare services to our patients. Your health and well-being are our top priority.
+          Our compassionate staff is here to ensure you receive the care you deserve.</p>
+        <p>Thank you for choosing us as your healthcare provider. We look forward to serving you!</p>
+    </div>
+</section>
+
+<section class="rows">
+  <h2>About Us</h2>
+  <div class="Content">
+    <p>
+       <ul  type="none">
+       <li> <strong>PENDO-MEDICARE</strong> is a well-established hospital that was founded in the year 1990 in the heart of Muranga County. </li>
+        <li>Over the past decades, we have grown to become a beacon of hope and a trusted healthcare provider, offering top-tier medical services and compassionate care to the local community and beyond.
+       Since our founding, we have remained steadfast in our mission to improve access to healthcare for individuals across all socio-economic backgrounds. </li>
+         Our journey began as a modest healthcare facility, but thanks to the overwhelming support of the community and our unwavering commitment to serve, we have expanded into a fully equipped, modern hospital.
+         <li> This growth has allowed us to extend a wide array of specialized services to address the diverse medical needs of our population. 
+         <ul type="none" align="center";>
+            <li>General Medical care</li>
+            <li>Maternity services</li>
+            <li>Childcare services</li>
+            <li>Outpatient services</li>
+         </ul>
+             
+       <li> One of the greatest testaments to our impact is the number of lives we’ve touched—thousands of children who are now thriving adults, and seniors who enjoy their golden years in good health, thanks to the early interventions, treatments, and preventive care we have provided.</li>
+        
+    </ul>
+    </p>
+    
+      <div class="row">
+      <div class="mission">
+        <h2>Our Mission</h2>
+        <p>
+          At <strong>PENDO-MEDICARE</strong>To provide affordable, high-quality healthcare services .
+      </div>
+      
+      <div class=" vision">
+        <h3>Our Vision</h3>
+        <p>
+          Our vision is to become a healthcare leader, setting new benchmarks for excellence . 
+        </p>
+      </div>
+      
+      <div class=" motto">
+        <h4>Our Motto</h4>
+        <p>
+          <em>"Better Health, Greater Joy."
+        </p>
+      </div>
+      
+      
+      </div>
+      
+      <p >
+          <em>We invite you to visit us and experience firsthand the unparalleled healthcare services we offer.
+             Whether you need routine check-ups, specialized treatments, or urgent care, we are here for you, committed to providing the best medical care in a compassionate and supportive environment. At <strong>PENDO-MEDICARE</strong>, your health is our priority, and we look forward to serving you and your family for many years to come.</em>   
+        </p>
+    </div> 
+        <div class="founders">
+            <p>FOUNDERS OF PENDO-MEDICARE</p>
+            <br>
+            <figure>
+                <img src="images/worker1.jpeg">
+                <figcaption>
+                    
+                    <p>CEO : <br> EDWIN SIFUNA<br>
+                    The Founder of Medicare
+                    </p>
+                </figcaption>
+            </figure>
+           
+            <figure>
+                <img src="images/worker2.jpeg">
+                <figcaption>
+                    
+                    <p>HEAD OF CARDIOLOGY <br>
+                         JOHN MAINA <br>
+                    The head of the Cardiology Department
+                    </p>
+                </figcaption>
+            </figure>
+            <figure>
+                <img src="images/worker3.png">
+                <figcaption>
+                    
+                    <p>CHIEF OF SURGERY:<br>
+                        CORDEL JAMES <br>
+                    The Head of Surgery Department
+                    </p>
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+</section>
+
+<section id="services">
+  <h2>Our Services</h2>
+  
+
+<p class="box">We provide a full range of services for the whole family. We also use an electronic medical record system to protect your data and ensure all billing is completely transparent.</p>
+<br>
+
+<section class="service-columns">
+    <section class="pharmacy">
+        <figure>
+            <img src="images/pham.png" alt="Pharmacy Image">
+            <figcaption>
+                <dl>
+                    <dd>Pharmacy</dd>
+                    <dt>
+                        <p class="box">Our hospital pharmacy offers the best drugs for your condition.<br> Order from us Today for the best.</p>
+                    </dt>
+                </dl>
+                <p>Some of the medicine includes:</p>
+                <ul>
+                    <li>Antibiotics</li>
+                    <li>Pain Relievers</li>
+                    <li>Diabetic Drugs</li>
+                    <li>Allergic Reaction Medication</li>
+                    <li>Family Planning</li>
+                    <li>Vaccination</li>
+                    <li>Anti-Fungal Medication</li>
+                    <li>Malaria Medication</li>
+                </ul>
+            </figcaption>
+        </figure>
+    </section>
+    <section class="medical">
+        <figure>
+            <img src="images/medical.png" alt="Medical Image">
+            <figcaption>
+                <dl>
+                    <dd>Medical Care</dd>
+                    <dt>
+                        <p class="box">Visit Us Today that is how we understand the health issues you are facing.<br> Our providers will take the time to get to know you, perform a physical exam,<br> and recommend appropriate lab testing and treatments.</p>
+                    </dt>
+                </dl>
+                <p>Some of the medicine includes:</p>
+                <ul>
+                    <li>General Consultations</li>
+                    <li>Antenatal Care</li>
+                    <li>NCD Care and Management</li>
+                    <li>OBGYN (please call ahead)</li>
+                    <li>Dental Consultations and Services</li>
+                </ul>
+            </figcaption>
+        </figure>
+    </section>
+    <section class="lab">
+        <figure>
+            <img src="images/lab.png" alt="Lab Image">
+            <figcaption>
+                <dl>
+                    <dd>Lab Services</dd>
+                    <dt>
+                        <p class="box">For the utmost first-class results and customer services,<br> Visit us today for any lab work.</p>
+                    </dt>
+                </dl>
+                <p>Some of the lab services include:</p>
+                <ul>
+                    <li>Urinalysis</li>
+                    <li>Stool Analysis</li>
+                    <li>HIV Testing</li>
+                    <li>Ultrasound</li>
+                    <li>And Many More!!!</li>
+                </ul>
+            </figcaption>
+        </figure>
+    </section>
+</section>
+</main>
+</div>
+</section>
+
+<section id="appointment">
+  <h2>Make an Appointment</h2>
+  <p>Choose the date and time that works best for you, and consult with our doctors from the comfort of your home.</p>
+  <button>Book an Appointment</button>
+</section>
+
+<footer>
+  <div class="footer-container">
+      <section class="contact">
+          <h3>Contact</h3>
+          <address>
+              <p class="box">Call us on +254207909045 anytime, 24/7.<br> Consult Online and get the best of the best Services.<br>Email: pendo-medicare@gmail.com</p>
+          </address>
+      </section>
+      <section class="social-media">
+          <p class="box">&copy; 2024 pendo-medicare Telemedicine App<br> Follow us on 
+              <a href="https://www.facebook.com/PendaHealth" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i> Facebook</a>
+              <a href="https://www.twitter.com/PendaHealth" target="_blank" class="social-icon"><i class="fab fa-twitter"></i> Twitter</a> 
+              <a href="https://www.linkedin.com/PendaHealth" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+          </p>
+      </section>
+      <section class="links">
+          <ul type="none";>
+              <li><a href="index.html" class="active">Home</a></li>
+              <li><a href="../services/services.html">Services</a></li>
+              <li><a href="bookappointment.html">Book Appointment</a></li>
+              <li><a href="prescription.html">Prescription</a></li>
+              <li><a href="cart.html">Cart</a></li>
+              <li><a href="payment.html">Payment Gateway</a></li>
+              <li><a href="../about us/aboutus.html">About Us</a></li>
+          </ul> 
+      </section>
+  </div>
+  
+</div>
+</footer>
+</body>
+</html>
+           
+          
